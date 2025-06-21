@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist de Presentes para Namorada</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-heart"></i> Wishlist de Presentes <i class="fas fa-heart"></i></h1>
+            <p>Para minha namorada especial 💕</p>
+        </header>
+
+        <div class="controls">
+            <button class="btn-primary" onclick="showAddForm()">
+                <i class="fas fa-plus"></i> Adicionar Presente
+            </button>
+            <button class="btn-secondary" onclick="showStatistics()">
+                <i class="fas fa-chart-bar"></i> Estatísticas
+            </button>
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterPresents('all')">Todos</button>
+                <button class="filter-btn" onclick="filterPresents('pending')">Pendentes</button>
+                <button class="filter-btn" onclick="filterPresents('given')">Dados</button>
+            </div>
+        </div>
+
+        <!-- Formulário para adicionar presente -->
+        <div id="addForm" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="hideAddForm()">&times;</span>
+                <h2>Adicionar Novo Presente</h2>
+                <form id="presentForm">
+                    <div class="form-group">
+                        <label for="presentName">Nome do Presente *</label>
+                        <input type="text" id="presentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="presentDescription">Descrição</label>
+                        <textarea id="presentDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="presentCategory">Categoria</label>
+                        <select id="presentCategory">
+                            <option value="Geral">Geral</option>
+                            <option value="Joias">Joias</option>
+                            <option value="Livros">Livros</option>
+                            <option value="Beleza">Beleza</option>
+                            <option value="Experiência">Experiência</option>
+                            <option value="Flores">Flores</option>
+                            <option value="Roupas">Roupas</option>
+                            <option value="Eletrônicos">Eletrônicos</option>
+                            <option value="Doces">Doces</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="presentPrice">Preço Estimado (R$)</label>
+                        <input type="number" id="presentPrice" step="0.01" min="0">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="hideAddForm()">Cancelar</button>
+                        <button type="submit" class="btn-primary">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de estatísticas -->
+        <div id="statisticsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="hideStatistics()">&times;</span>
+                <h2>Estatísticas da Wishlist</h2>
+                <div id="statisticsContent"></div>
+            </div>
+        </div>
+
+        <!-- Lista de presentes -->
+        <div class="presents-container">
+            <div id="presentsList"></div>
+            <div id="emptyState" class="empty-state">
+                <i class="fas fa-gift"></i>
+                <p>Sua wishlist está vazia</p>
+                <p>Adicione seu primeiro presente!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
